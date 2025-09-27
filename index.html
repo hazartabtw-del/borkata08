@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1abc9c" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="BMCONSTRUCTION — качествено строителство и ремонти в София. Пълно обслужване, прозрачни оферти и доказани материали." />
+  <meta property="og:site_name" content="BMCONSTRUCTION" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BMCONSTRUCTION — Строителство и ремонти" />
+  <meta property="og:description" content="Груб строеж, довършителни работи, ел. и ВиК, бани, покриви. Свържете се за безплатна консултация." />
+  <meta property="og:image" content="logo.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%231abc9c%22/><path d=%22M8 44h48v4H8zM12 24h8v16h-8zM28 16h8v24h-8zM44 28h8v12h-8z%22 fill=%22white%22/></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --brand:#1abc9c; --brand-2:#16a085; --ink:#2c3e50; --bg:#f6f9fb; --panel:#ffffff; --muted:#5f6b75;
+      --ring:0 0 0 3px rgba(26,188,156,.25); --shadow:0 8px 24px rgba(0,0,0,.10);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:
+      radial-gradient(1200px 800px at 15% 10%, rgba(26,188,156,.08), transparent 60%),
+      radial-gradient(1000px 700px at 85% 85%, rgba(52,152,219,.09), transparent 60%),
+      var(--bg);min-height:100vh;display:flex;flex-direction:column}
+    a{color:inherit}
+    /* ====== Layout ====== */
+    .container{width:min(1100px,92vw);margin:0 auto}
+    header.global{position:sticky;top:0;z-index:20;background:linear-gradient(135deg,#2c3e50,#34495e);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px}
+    .logo{display:flex;align-items:center;gap:10px;color:#ecf0f1;text-decoration:none;font-weight:800;letter-spacing:.5px}
+    .logo svg{width:34px;height:34px;filter:drop-shadow(0 0 10px rgba(26,188,156,.6))}
+    .logo span{color:#ecf0f1}
+    nav.primary{display:flex;gap:18px;flex-wrap:wrap}
+    nav.primary a{color:#ecf0f1;text-decoration:none;font-weight:700;padding:.5rem 1rem;border-radius:999px;transition:.2s}
+    nav.primary a:hover,nav.primary a:focus{background:var(--brand);outline:none;box-shadow:0 0 0 3px rgba(26,188,156,.25)}
+    main{flex:1}
+    footer.global{background:#2c3e50;color:#ecf0f1;margin-top:40px}
+    footer .container{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:24px 18px}
+    footer a{color:#d1faf0}
+    .subfoot{padding:12px 18px;border-top:1px solid rgba(255,255,255,.12);text-align:center;color:#cfe9e4}
+    @media (max-width:720px){footer .container{grid-template-columns:1fr}}
+    /* ====== Shared components ====== */
+    .hero{position:relative;isolation:isolate;padding:56px 0;overflow:hidden;background:linear-gradient(135deg,#2c3e50,#34495e)}
+    .hero .container{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:28px}
+    .hero h1{color:var(--brand);font-size:clamp(1.8rem,2.8vw+1rem,3.2rem);text-shadow:0 0 12px rgba(26,188,156,.45);margin:0}
+    .hero p{color:#d0f0ed;margin:.65rem 0 1.2rem;font-weight:500}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:linear-gradient(180deg,#18b79f,#0f8f77);color:#fff;border:none;padding:.9rem 1.25rem;border-radius:999px;cursor:pointer;font-weight:700;box-shadow:0 10px 22px rgba(15,140,110,.24);transition:.2s}
+    .btn.secondary{background:#ecf0f1;color:#0f6b56;border:1px solid #bfeee2;box-shadow:0 8px 16px rgba(10,80,60,.08)}
+    .btn:hover,.btn:focus{transform:translateY(-2px);outline:none}
+    .card{background:var(--panel);border-radius:16px;box-shadow:var(--shadow);padding:18px}
+    h2.section{color:var(--brand);text-align:center;margin:36px 0 12px;text-shadow:0 0 10px rgba(26,188,156,.35)}
+    .grid{display:grid;gap:18px}
+    /* Sticky CTA */
+    .sticky-cta{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:10px;z-index:40}
+    .sticky-cta a{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none}
+    /* Gallery */
+    .gallery{display:flex;overflow-x:auto;gap:14px;scroll-snap-type:x mandatory;padding-bottom:6px}
+    .gallery img{height:260px;flex:0 0 auto;object-fit:cover;border-radius:12px;scroll-snap-align:start;box-shadow:0 6px 16px rgba(0,0,0,.12);transition:.2s}
+    .gallery img:hover{transform:translateY(-4px)}
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    blockquote.testi{background:#ecf9f6;border-left:4px solid var(--brand);padding:14px;border-radius:12px;font-style:italic}
+    /* FAQ */
+    details.faq{background:#f4fbf9;border:1px solid #d6f7ee;padding:12px 14px;border-radius:12px}
+    details.faq+details.faq{margin-top:10px}
+    summary{cursor:pointer;font-weight:700}
+    /* Partners */
+    .partners{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:center;opacity:.9}
+    .partners img{height:34px;filter:grayscale(1);opacity:.8}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"BMCONSTRUCTION",
+    "image":"logo.png",
+    "telephone":"+359899123456",
+    "email":"bmconstruction@abv.bg",
+    "address":{"@type":"PostalAddress","addressLocality":"Sofia","addressCountry":"BG"},
+    "areaServed":"Sofia",
+    "url":"https://example.com/",
+    "sameAs":[]
+  }
+  </script>
+</head><body>
+  <header class="global">
+    <div class="topbar container">
+      <a class="logo" href="index.html" aria-label="BMCONSTRUCTION начало">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#1abc9c"/><path d="M8 44h48v4H8zM12 24h8v16h-8zM28 16h8v24h-8zM44 28h8v12h-8z" fill="white"/></svg>
+        <span>BMCONSTRUCTION</span>
+      </a>
+      <nav class="primary" aria-label="Основна навигация">
+        <a href="index.html">Начало</a>
+        <a href="projects.html">Проекти</a>
+        <a href="about.html">За нас</a>
+        
+        <a href="#contact">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="container">
+  <h2 class="section">Нашите услуги</h2>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="card"><h3>🧱 Груб строеж</h3><p>Зидане, кофраж, бетон и основи.</p></div>
+    <div class="card"><h3>🏠 Довършителни работи</h3><p>Мазилки, шпакловки, замазки и боя.</p></div>
+    <div class="card"><h3>⚡ Ел и ВиК</h3><p>Нови инсталации и подмяна.</p></div>
+    <div class="card"><h3>🛁 Бани</h3><p>Плочки, хидроизолация и обзавеждане.</p></div>
+    <div class="card"><h3>🧰 Покриви</h3><p>Изграждане, подмяна и изолация.</p></div>
+  </div>
+
+  <h2 class="section">Нашите проекти</h2>
+  <div class="gallery" aria-label="Галерия с реализирани обекти">
+    <img loading="lazy" src="project1.jpg" alt="Завършен обект 1 — фасада" />
+    <img loading="lazy" src="project2.jpg" alt="Завършен обект 2 — интериор" />
+    <img loading="lazy" src="project3.jpg" alt="Завършен обект 3 — баня" />
+    <img loading="lazy" src="project4.jpg" alt="Завършен обект 4 — покрив" />
+  </div>
+
+  <h2 class="section">Отзиви от клиенти</h2>
+  <div class="testimonials">
+    <blockquote class="testi">“Професионална комуникация и отличен резултат. Препоръчвам!” — М. Георгиева</blockquote>
+    <blockquote class="testi">“Дадоха ясни срокове и ги спазиха. Цената беше прозрачна.” — П. Иванов</blockquote>
+    <blockquote class="testi">“Чисто изпълнение и грижа към детайлите.” — К. Димитров</blockquote>
+  </div>
+
+  <h2 class="section">FAQ</h2>
+  <details class="faq"><summary>Как работите и какви са сроковете?</summary><p>Започваме с оглед и оферта. След одобрение изготвяме график и подписваме договор. Сроковете зависят от обема, но винаги са фиксирани в договора.</p></details>
+  <details class="faq"><summary>Работите ли с наши материали?</summary><p>Да, можем да работим с ваши материали, но препоръчваме сертифицирани доставчици за гаранционно обслужване.</p></details>
+  <details class="faq"><summary>Предлагате ли гаранция?</summary><p>Да, даваме писмена гаранция според вида дейност.</p></details>
+</main><footer class="global" id="contact">
+    <div class="container">
+      <div>
+        <h3 style="margin-top:0">Контакти</h3>
+        <p>Телефон: <a href="tel:+359899123456">0899 123 456</a><br/>
+        Email: <a href="mailto:bmconstruction@abv.bg">bmconstruction@abv.bg</a><br/>
+        Адрес: София</p>
+        <form action="https://formspree.io/f/mdkdprpp" method="POST" class="card" style="padding:12px;display:grid;gap:10px">
+          <input name="Име" placeholder="Име" required />
+          <input type="tel" name="Телефон" placeholder="Телефон" required />
+          <textarea name="Съобщение" rows="4" placeholder="Какъв ремонт ви интересува?"></textarea>
+          <button class="btn" type="submit">Изпрати</button>
+        </form>
+      </div>
+      <div>
+        <h3 style="margin-top:0">Къде работим</h3>
+        <iframe title="Карта София" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Sofia&z=12&output=embed"
+          style="width:100%;height:260px;border:0;border-radius:12px;box-shadow:var(--shadow)"></iframe>
+        <p style="margin-top:10px;color:#cfe9e4">Работим в София и региона. За други населени места – свържете се с нас.</p>
+      </div>
+    </div>
+    <div class="subfoot">© 2025 BMCONSTRUCTION • Всички права запазени</div>
+  </footer>
+
+  <div class="sticky-cta" aria-label="Бърз контакт">
+    <a class="btn" href="tel:+359899123456">📞 Обади се</a>
+    <a class="btn secondary" href="mailto:bmconstruction@abv.bg">✉️ Пиши ни</a>
+  </div>
+</body>
+</html>

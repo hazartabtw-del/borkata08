@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Проекти — BMCONSTRUCTION</title>
+  <meta name="description" content="Готови и бъдещи проекти — сравнение преди/след с плъзгач.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{ --brand:#1abc9c; --ink:#2c3e50; --bg:#f6f9fb; --panel:#fff; --shadow:0 8px 24px rgba(0,0,0,.10) }
+    *{ box-sizing:border-box }
+    html,body{ margin:0; padding:0 }
+    body{ font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Ubuntu,Arial,sans-serif; color:var(--ink); background:var(--bg); min-height:100vh; display:flex; flex-direction:column }
+    .container{ width:min(1100px,92vw); margin:0 auto }
+    header{ position:sticky; top:0; z-index:10; background:linear-gradient(135deg,#2c3e50,#34495e); box-shadow:0 6px 16px rgba(0,0,0,.25) }
+    .top{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 18px; color:#ecf0f1 }
+    .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; color:#ecf0f1; font-weight:800 }
+    .logo svg{ width:34px; height:34px; filter:drop-shadow(0 0 10px rgba(26,188,156,.6)) }
+    nav a{ color:#ecf0f1; text-decoration:none; font-weight:700; padding:.45rem .9rem; border-radius:999px }
+    nav a:hover{ background:#1abc9c }
+    main{ flex:1 }
+    .hero{ background:linear-gradient(135deg,#2c3e50,#34495e); color:#d0f0ed; padding:48px 0 }
+    .hero h1{ color:#1abc9c; margin:0 0 .4rem; text-shadow:0 0 10px rgba(26,188,156,.5) }
+    h2.section{ color:#1abc9c; text-align:center; margin:32px 0 12px }
+    .card{ background:var(--panel); border-radius:16px; box-shadow:var(--shadow); padding:16px }
+
+    /* ===== Before/After slider ===== */
+    .ba{ position:relative; width:100%; aspect-ratio: 16/9; border-radius:14px; overflow:hidden; box-shadow:var(--shadow); background:#d9e3ea; --pos:50; user-select:none; }
+    .ba *{ user-select:none; }
+    .ba img{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+    .ba .ba-after{ position:absolute; inset:0; clip-path:polygon(0 0, calc(var(--pos)*1%) 0, calc(var(--pos)*1%) 100%, 0 100%); }
+    .ba .ba-handle{ position:absolute; top:0; bottom:0; left:calc(var(--pos)*1% - 1px); width:2px; background:#ffffffaa; box-shadow:0 0 0 2px #00000022 inset; }
+    .ba .ba-knob{ position:absolute; left:calc(var(--pos)*1% - 16px); top:50%; transform:translateY(-50%); width:32px; height:32px; border-radius:50%; background:#1abc9c; border:2px solid #fff; box-shadow:0 6px 16px rgba(0,0,0,.25); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; cursor:grab; }
+    .ba .ba-knob:active{ cursor:grabbing; }
+    .ba .ba-knob::before{ content:'↔'; }
+
+    .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px }
+    .project-card{ display:grid; gap:10px }
+
+    footer{ background:#2c3e50; color:#ecf0f1; margin-top:40px }
+    footer .container{ display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:20px 18px }
+    .sub{ padding:12px 18px; border-top:1px solid rgba(255,255,255,.12); text-align:center; color:#cfe9e4 }
+    @media (max-width:720px){ footer .container{ grid-template-columns:1fr } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top container">
+      <a class="logo" href="index.html" aria-label="BMCONSTRUCTION начало">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="12" fill="#1abc9c"/><path d="M8 44h48v4H8zM12 24h8v16h-8zM28 16h8v24h-8zM44 28h8v12h-8z" fill="white"/></svg>
+        <span>BMCONSTRUCTION</span>
+      </a>
+      <nav aria-label="Основна навигация">
+        <a href="index.html">Начало</a>
+        <a href="projects.html" aria-current="page">Проекти</a>
+        <a href="about.html">За нас</a>
+        <a href="#contact">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Нашите проекти</h1>
+      <p>Плъзни кръгчето ↔ по средната лента, за да сравниш „преди“ и „след“.</p>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section">Готови проекти</h2>
+    <div class="grid">
+      <div class="project-card card">
+        <h3 style="margin:0">Проект 1</h3>
+        <div class="ba" data-pos="50">
+          <img src="before1.jpg" alt="Преди — проект 1" class="ba-before">
+          <img src="after1.jpg" alt="След — проект 1" class="ba-after">
+          <div class="ba-handle" aria-hidden="true"></div>
+          <div class="ba-knob" role="slider" aria-label="Сравнение" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+        </div>
+      </div>
+      <div class="project-card card">
+        <h3 style="margin:0">Проект 2</h3>
+        <div class="ba" data-pos="50">
+          <img src="before2.jpg" alt="Преди — проект 2" class="ba-before">
+          <img src="after2.jpg" alt="След — проект 2" class="ba-after">
+          <div class="ba-handle" aria-hidden="true"></div>
+          <div class="ba-knob" role="slider" aria-label="Сравнение" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+        </div>
+      </div>
+      <div class="project-card card">
+        <h3 style="margin:0">Проект 3</h3>
+        <div class="ba" data-pos="50">
+          <img src="before3.jpg" alt="Преди — проект 3" class="ba-before">
+          <img src="after3.jpg" alt="След — проект 3" class="ba-after">
+          <div class="ba-handle" aria-hidden="true"></div>
+          <div class="ba-knob" role="slider" aria-label="Сравнение" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section">Бъдещ проект</h2>
+    <div class="card">
+      <h3 style="margin:0 0 8px 0">Предстоящ обект</h3>
+      <p>В момента реализираме строителството на 10 еднофамилни къщи в село Иваняне, разположено в непосредствена близост до гр. Банкя. Локацията е отлична – в близост се намират хранителен магазин, автобусна спирка и други удобства. Районът се отличава с чист въздух и спокойна среда, което го прави идеален за семейно обитаване. Всяка къща разполага с индивидуален двор, осигуряващ лично пространство и комфорт.</p>
+      <figure style="margin:12px 0 0 0">
+        <img src="future-placeholder.jpg" alt="Бъдещ проект (placeholder)" style="width:100%;height:auto;border-radius:12px;border:1px dashed #cfd9d6;opacity:.8">
+      </figure>
+    </div>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div>
+        <h3 style="margin-top:0">Контакти</h3>
+        <p>Телефон: <a href="tel:+359899123456" style="color:#d1faf0">0899 123 456</a><br/>
+        Email: <a href="mailto:bmconstruction@abv.bg" style="color:#d1faf0">bmconstruction@abv.bg</a></p>
+      </div>
+      <div>
+        <h3 style="margin-top:0">Карта</h3>
+        <iframe title="Карта София" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Sofia&z=12&output=embed"
+          style="width:100%;height:220px;border:0;border-radius:12px;box-shadow:var(--shadow)"></iframe>
+      </div>
+    </div>
+    <div class="sub">© 2025 BMCONSTRUCTION</div>
+  </footer>
+
+  <script>
+    (function(){
+      function setPos(el, p){
+        p = Math.max(0, Math.min(100, p));
+        el.style.setProperty('--pos', p);
+        const knob = el.querySelector('.ba-knob');
+        if(knob){ knob.setAttribute('aria-valuenow', String(Math.round(p))); }
+      }
+      function getPct(el, clientX){
+        const r = el.getBoundingClientRect();
+        return ((clientX - r.left) / r.width) * 100;
+      }
+      document.querySelectorAll('.ba').forEach(el=>{
+        setPos(el, Number(el.dataset.pos || 50));
+        const knob = el.querySelector('.ba-knob');
+        let dragging = false;
+        function start(e){
+          dragging = true;
+          document.body.style.userSelect = 'none';
+          if(e.type === 'mousedown') move(e);
+        }
+        function move(e){
+          if(!dragging) return;
+          if(e.touches && e.touches[0]) e = e.touches[0];
+          setPos(el, getPct(el, e.clientX));
+        }
+        function end(){
+          dragging = false;
+          document.body.style.userSelect = '';
+        }
+        el.addEventListener('mousedown', start);
+        el.addEventListener('mousemove', move);
+        window.addEventListener('mouseup', end);
+        el.addEventListener('touchstart', start, {passive:true});
+        el.addEventListener('touchmove', move, {passive:true});
+        window.addEventListener('touchend', end);
+        // keyboard control
+        knob.addEventListener('keydown', (e)=>{
+          const step = (e.shiftKey? 10 : 2);
+          const cur = Number(getComputedStyle(el).getPropertyValue('--pos'));
+          if(e.key === 'ArrowLeft'){ setPos(el, cur - step); e.preventDefault(); }
+          if(e.key === 'ArrowRight'){ setPos(el, cur + step); e.preventDefault(); }
+          if(e.key === 'Home'){ setPos(el, 0); e.preventDefault(); }
+          if(e.key === 'End'){ setPos(el, 100); e.preventDefault(); }
+        });
+        // click to jump
+        el.addEventListener('click', (e)=>{ setPos(el, getPct(el, e.clientX)); });
+      });
+    })();
+  </script>
+</body>
+</html>
